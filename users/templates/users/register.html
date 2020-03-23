@@ -1,4 +1,7 @@
 {% extends "blog/base.html"%}
+
+{% load crispy_forms_tags%}
+
 {% block content%}
     <div class="content-section">
         <form method="POST">
@@ -7,7 +10,8 @@
             <fieldset class="form-group">
             <legend class="border-bottom mb-4">Join</legend>
 
-            {{form.as_p}}
+{% comment %} added crispy filter to form {% endcomment %}
+            {{form|crispy}}
                 <div class="form-group">
                     <button type="submit" class="btn btn-outline-info">Sign Up</button>
                 </div>

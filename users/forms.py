@@ -9,3 +9,7 @@ class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username','email','password1','password2']
+
+
+
+# this class inherits UserCreationForm from auth.forms and adds custom email field to it
