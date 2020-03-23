@@ -57,7 +57,24 @@
 <main role="main" class="container">
   <div class="row">
     <div class="col-md-8">
+
+
+    {% comment %} checking for flash messages from views {% endcomment %}
+      {% if messages %}
+        {% for message in messages%}
+          <div class="alert alert-{{message.tags}}">
+            {{message}}
+          </div>
+        {% endfor %}
+      {% endif %}
+
+
+{% comment %} content block starts here {% endcomment %}
+
       {% block content %}{% endblock %}
+
+
+
     </div>
     <div class="col-md-4">
       <div class="content-section">
