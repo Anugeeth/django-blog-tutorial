@@ -19,7 +19,7 @@ posts = [
     },
 ]
 
-
+#  home view
 def home(request):
     context = {
         'posts': posts,
@@ -27,6 +27,6 @@ def home(request):
     }
     return render(request, 'blog/home.html', context)
 
-
+# about view
 def about(request):
     return render(request, 'blog/about.html')
