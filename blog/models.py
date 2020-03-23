@@ -14,6 +14,9 @@ class Post(models.Model):
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.title
+
 #  to see the sql code corresponding to the model,
 #  $ python manage.py sqlmigrate <app_name> <migration_no> 
 #  example  $ python manage.py sqlmigrate blog 0001
