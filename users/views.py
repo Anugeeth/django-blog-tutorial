@@ -1,32 +1,27 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import UserRegistrationForm as forms
+from .forms import UserRegistrationForm as UserRegForm
 
 from django.http import HttpResponse
 # Create your views here.
 
 
 def register(request):
-
 # checking whether is request is a post request or not if yes data is [passed] to the usercreation model
     if request.method == 'POST':
-        form = forms(request.POST)
+        form = UserRegForm(request.POST)
         if form.is_valid():
             # saving form
             form.save()
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}')
+            messages.success(request, f'Account created for {username}, Login now!!!')
 
             # for returning messages 
-            return redirect('blog-home')
+            return redirect('login')
 
 # for other requests on the same route user creation form is returned  
     else:
-        form = forms()
+        form = UserRegForm()
 
     return render(request, 'users/register.html', {'form' : form})
     
-def login(request):
-    # form = UserCreationForm()
-    # return render(request, 'users/register.html', {'form' : form})
-    return HttpResponse('<h1>Login</h1>')
